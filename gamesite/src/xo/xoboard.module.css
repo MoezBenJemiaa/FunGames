@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  font-family: sans-serif;
+}
+
+.status {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 60px);
+  grid-template-rows: repeat(3, 60px);
+  gap: 8px;
+
+}
+
+.cell {
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  background-color: #ffffff;
+  border: 2px solid #ccc;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  color: black;
+}
+
+
+.restartButton {
+  padding: 8px 16px;
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.restartButton:hover {
+  background-color: #0059c1;
+}
