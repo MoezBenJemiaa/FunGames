@@ -199,4 +199,8 @@ html {
   }
   form .inputGroup2 #showPasswordToggle input:disabled ~ .indicator:after {
 	visibility: hidden;
+<<<<<<< Updated upstream
   }
+=======
+  }
+>>>>>>> Stashed changes
