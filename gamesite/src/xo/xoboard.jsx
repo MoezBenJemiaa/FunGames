@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from './XOBoard.module.css';
+import styles from './xoboard.module.css';
 
 const XOBoard = () => {
   const [squares, setSquares] = useState(Array(9).fill(null));
