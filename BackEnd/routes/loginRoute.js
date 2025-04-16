@@ -6,10 +6,8 @@ const { jwtSecret } = require("../config/keys");
 
 const router = express.Router();
 
-router.post("/", async (req, res) => {
-    console.log("Login route hit"); // Debugging line
+router.post("/", async (req, res) => {// Debugging line
     try {
-        console.log("Received login request:", req.body);
 
         const { email, password } = req.body;
         // Check if user already exists
