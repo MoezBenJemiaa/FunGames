@@ -7,7 +7,7 @@ const Header = () => {
     <header className={styles.header}>
       <div className={styles.logo}>MyLogo</div>
       <nav className={styles.nav}>
-        <a href="#home" className={styles.link}>Home</a>
+        <a href="/" className={styles.link}>Home</a>
         <a href="#about" className={styles.link}>About</a>
         <a href="#contact" className={styles.link}>Contact</a>
         <Link to="/login" className={styles.loginButton}>Login</Link>

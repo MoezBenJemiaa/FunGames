@@ -1,7 +1,7 @@
 import React, { useEffect, useRef ,useState} from "react";
 import axios from "axios";
 import { TweenMax, Power2, Quad, Expo } from "gsap";
-
+import "./YetiLogin.css";
 
 
 
