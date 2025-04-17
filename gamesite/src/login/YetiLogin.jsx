@@ -1,7 +1,7 @@
 import React, { useEffect, useRef ,useState} from "react";
 import axios from "axios";
 import { TweenMax, Power2, Quad, Expo } from "gsap";
-import "./YetiLogin.css";
+
 
 
 
@@ -370,6 +370,38 @@ const YetiLogin = () => {
       </g>
     </svg>
   ));
+
+
+
+  useEffect(() => {
+    const head = document.head;
+
+    // ✅ Google Fonts
+    const font = document.createElement('link');
+    font.rel = 'stylesheet';
+    font.href = 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700';
+    head.appendChild(font);
+
+    // ✅ Reset CSS
+    const reset = document.createElement('link');
+    reset.rel = 'stylesheet';
+    reset.href = 'https://public.codepenassets.com/css/reset-2.0.min.css';
+    head.appendChild(reset);
+
+    // ✅ Custom Login Styles
+    const login = document.createElement('link');
+    login.rel = 'stylesheet';
+    login.href = './YetiLogin.css'; // this file must be in public/ folder
+    head.appendChild(login);
+
+    // ✅ CLEANUP
+    return () => {
+      head.removeChild(font);
+      head.removeChild(reset);
+      head.removeChild(login);
+    };
+  }, []);
+
 
 
   const emailRef = useRef(null);
@@ -789,6 +821,7 @@ const YetiLogin = () => {
   };
   
   return (
+    <div className="login_pag">
     <form onSubmit={handleSubmit}>
       <div className="svgContainer">
         <div>
@@ -816,6 +849,7 @@ const YetiLogin = () => {
         <button id="login">Log in</button>
       </div>
     </form>
+    </div>
   );
 };
 
