@@ -1,16 +1,80 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styles from "./header.module.css";
-import { Link } from "react-router-dom"; // Import Link
+import { Link } from "react-router-dom";
+import { FaUserCircle } from "react-icons/fa"; // User icon
 
 const Header = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(true); // Simulated login state
+  const [showPopup, setShowPopup] = useState(false);
+  const popupRef = useRef(null); // ⬅️ reference for popup
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setShowPopup(false);
+    // Add real logout logic here
+  };
+
+  const togglePopup = () => {
+    setShowPopup((prev) => !prev);
+  };
+
+  // ⬇️ Click outside to close
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (popupRef.current && !popupRef.current.contains(event.target)) {
+        setShowPopup(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <header className={styles.header}>
-      <div className={styles.logo}>MyLogo</div>
+      <Link to="/" className={styles.logo}>
+        Fun Games:Moez & Rostom
+      </Link>
       <nav className={styles.nav}>
-        <a href="/" className={styles.link}>Home</a>
-        <a href="#about" className={styles.link}>About</a>
-        <a href="#contact" className={styles.link}>Contact</a>
-        <Link to="/login" className={styles.loginButton}>Login</Link>
+        <a href="#values" className={styles.link}>
+          Values
+        </a>
+        <a href="#games" className={styles.link}>
+          Games
+        </a>
+        <a href="#contact" className={styles.link}>
+          Contact
+        </a>
+
+        {!isLoggedIn ? (
+          <Link to="/login" className={styles.loginButton}>
+            Login/SignUp
+          </Link>
+        ) : (
+          <div className={styles.userSection}>
+            <button onClick={handleLogout} className={styles.logoutButton}>
+              Logout
+            </button>{" "}
+            {/* ahwaka aamalt zouz button login wehed fel popup w lekher hetha ken theb moez badlou 'Join Game' wala nahih ama ena l feyda famma button azrek fel les deux cas*/}
+            <FaUserCircle
+              className={styles.userIcon}
+              onClick={togglePopup}
+              size={37}
+            />
+            {showPopup && (
+              <div className={styles.popup} ref={popupRef}>
+                <Link to="/profile" className={styles.popupLink}>
+                  Profile
+                </Link>
+                <button onClick={handleLogout} className={styles.popupButton}>
+                  Logout
+                </button>
+              </div>
+            )}
+          </div>
+        )}
       </nav>
     </header>
   );

@@ -1,16 +1,23 @@
 .header {
+  max-width: 1000px;
+  margin: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 16px 32px;
   background-color: #ffffff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 4px 4px 0 #000; 
+  border-radius: 50px;
+  border: #333 solid;
+  
 }
+
 
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
   color: #333;
+  text-decoration: none;
 }
 
 .nav {
@@ -24,24 +31,107 @@
   color: #333;
   font-weight: 500;
   transition: color 0.2s ease-in-out;
+  font-size: 1.25rem;
+  
 }
 
 .link:hover {
-  color: #007bff;
+  color: #ffba58;
 }
 
 .loginButton {
+  width: 200px;
   text-decoration: none;
   padding: 8px 16px;
-  background-color: #007bff;
+  background-color: #3493f7;
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 50px;
+  box-shadow: 2px 2px 0 #000; 
   cursor: pointer;
   font-weight: 500;
   transition: background-color 0.2s ease-in-out;
+  font-size: 1.25rem;
 }
 
 .loginButton:hover {
-  background-color: #0056b3;
+  background-color: #1e77d3;
+}
+
+.userSection {
+  display: flex;
+  align-items: center;
+  position: relative;
+  gap: 10px;
+}
+
+.userIcon {
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.userIcon:hover {
+  color: #ffba58;
+}
+
+@font-face {
+  font-family: "FinalDraft";
+  src: url("../assets/Final Draft.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.popup {
+  position: absolute;
+  top: 65px;
+  right: 0;
+  background: white;
+  border-radius: 16px;
+  padding: 10px;
+  box-shadow: 3px 3px 0 #000;
+  border: #000 solid 1px;
+  z-index: 10;
+  
+}
+
+.popupLink,
+.popupButton {
+  display: block;
+  background: none;
+  border: none;
+  color: #333;
+  padding: 8px 12px;
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-family: "FinalDraft", sans-serif;
+}
+
+.popupLink:hover {
+  color: #ffba58;
+}
+
+.popupButton {
+  color: #f52e2e;
+}
+.popupButton:hover {
+  color: #d92929;
+}
+
+.logoutButton {
+  width: 150px;
+  text-decoration: none;
+  padding: 8px 16px;
+  background-color: #3493f7;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 2px 2px 0 #000; 
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  font-weight: 500;
+  font-size: 1.25rem;
+  font-family: "FinalDraft", sans-serif;
 }
