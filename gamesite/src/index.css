@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-synthesis: none;
@@ -12,6 +11,12 @@ html, body, #root {
   overflow-x: hidden;
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
 }
-=======
->>>>>>> Stashed changes
+
+@font-face {
+  font-family: "FinalDraft";
+  src: url("../assets/Final Draft.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
