@@ -1,9 +1,7 @@
-import React, { useEffect, useRef ,useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { TweenMax, Power2, Quad, Expo } from "gsap";
 import "./YetiLogin.css";
-
-
 
 const YetiLogin = () => {
   const SVGComponent = React.forwardRef((props, ref) => (
@@ -46,7 +44,12 @@ const YetiLogin = () => {
         />
       </g>
       <g className="earL">
-        <g className="outerEar" fill="#ddf1fa" stroke="#3a5e77" strokeWidth={2.5}>
+        <g
+          className="outerEar"
+          fill="#ddf1fa"
+          stroke="#3a5e77"
+          strokeWidth={2.5}
+        >
           <circle cx={47} cy={83} r={11.5} />
           <path
             d="M46.3 78.9c-2.3 0-4.1 1.9-4.1 4.1 0 2.3 1.9 4.1 4.1 4.1"
@@ -371,27 +374,26 @@ const YetiLogin = () => {
     </svg>
   ));
 
-
-
   useEffect(() => {
     const head = document.head;
 
     // ✅ Google Fonts
-    const font = document.createElement('link');
-    font.rel = 'stylesheet';
-    font.href = 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700';
+    const font = document.createElement("link");
+    font.rel = "stylesheet";
+    font.href =
+      "https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700";
     head.appendChild(font);
 
     // ✅ Reset CSS
-    const reset = document.createElement('link');
-    reset.rel = 'stylesheet';
-    reset.href = 'https://public.codepenassets.com/css/reset-2.0.min.css';
+    const reset = document.createElement("link");
+    reset.rel = "stylesheet";
+    reset.href = "https://public.codepenassets.com/css/reset-2.0.min.css";
     head.appendChild(reset);
 
     // ✅ Custom Login Styles
-    const login = document.createElement('link');
-    login.rel = 'stylesheet';
-    login.href = './YetiLogin.css'; // this file must be in public/ folder
+    const login = document.createElement("link");
+    login.rel = "stylesheet";
+    login.href = "./YetiLogin.css"; // this file must be in public/ folder
     head.appendChild(login);
 
     // ✅ CLEANUP
@@ -402,14 +404,11 @@ const YetiLogin = () => {
     };
   }, []);
 
-
-
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const showPasswordCheckRef = useRef(null);
   const svgRef = useRef(null);
 
-  
   useEffect(() => {
     const email = emailRef.current;
     const password = passwordRef.current;
@@ -447,14 +446,35 @@ const YetiLogin = () => {
       hair: select(".hair"),
       bodyBGchanged: select(".bodyBGchanged"),
       bodyBG: select(".bodyBGnormal"),
-      mouthMaskPath: select("#mouthMaskPath")
+      mouthMaskPath: select("#mouthMaskPath"),
     };
 
     const {
-      armL, armR, twoFingers, eyeL, eyeR, nose, mouth, mouthBG, mouthSmallBG,
-      mouthMediumBG, mouthLargeBG, mouthOutline, tooth, tongue, chin, face,
-      eyebrow, outerEarL, outerEarR, earHairL, earHairR, hair,
-      bodyBGchanged, bodyBG, mouthMaskPath
+      armL,
+      armR,
+      twoFingers,
+      eyeL,
+      eyeR,
+      nose,
+      mouth,
+      mouthBG,
+      mouthSmallBG,
+      mouthMediumBG,
+      mouthLargeBG,
+      mouthOutline,
+      tooth,
+      tongue,
+      chin,
+      face,
+      eyebrow,
+      outerEarL,
+      outerEarR,
+      earHairL,
+      earHairR,
+      hair,
+      bodyBGchanged,
+      bodyBG,
+      mouthMaskPath,
     } = elements;
 
     TweenMax.set(armL, { x: -93, y: 220, rotation: 105 });
@@ -498,77 +518,110 @@ const YetiLogin = () => {
 
     // These declarations are now clean and you can use them inside your animation logic.
 
-        
-
-        
-
-    const getPosition=(el)=> {
+    const getPosition = (el) => {
       var xPos = 0;
       var yPos = 0;
-    
+
       while (el) {
         if (el.tagName == "BODY") {
           // deal with browser quirks with body/window/document and page scroll
           var xScroll = el.scrollLeft || document.documentElement.scrollLeft;
           var yScroll = el.scrollTop || document.documentElement.scrollTop;
-    
-          xPos += (el.offsetLeft - xScroll + el.clientLeft);
-          yPos += (el.offsetTop - yScroll + el.clientTop);
+
+          xPos += el.offsetLeft - xScroll + el.clientLeft;
+          yPos += el.offsetTop - yScroll + el.clientTop;
         } else {
           // for all other non-BODY elements
-          xPos += (el.offsetLeft - el.scrollLeft + el.clientLeft);
-          yPos += (el.offsetTop - el.scrollTop + el.clientTop);
+          xPos += el.offsetLeft - el.scrollLeft + el.clientLeft;
+          yPos += el.offsetTop - el.scrollTop + el.clientTop;
         }
-    
+
         el = el.offsetParent;
       }
       //console.log("xPos: " + xPos + ", yPos: " + yPos);
       return {
         x: xPos,
-        y: yPos
+        y: yPos,
       };
-    }
-    const getAngle=(x1, y1, x2, y2)=> {
+    };
+    const getAngle = (x1, y1, x2, y2) => {
       var angle = Math.atan2(y1 - y2, x1 - x2);
       return angle;
-    }
+    };
 
-
-    const calculateFaceMove=(e)=> {
-      var 	
-        carPos = email.selectionEnd,
-        div = document.createElement('div'),
-        span = document.createElement('span'),
+    const calculateFaceMove = (e) => {
+      var carPos = email.selectionEnd,
+        div = document.createElement("div"),
+        span = document.createElement("span"),
         copyStyle = getComputedStyle(email),
-        caretCoords = {}
-      ;
-      if(carPos == null || carPos == 0) {
+        caretCoords = {};
+      if (carPos == null || carPos == 0) {
         // if browser doesn't support 'selectionEnd' property on input[type="email"], use 'value.length' property instead
         carPos = email.value.length;
       }
-      [].forEach.call(copyStyle, function(prop){
+      [].forEach.call(copyStyle, function (prop) {
         div.style[prop] = copyStyle[prop];
       });
-      div.style.position = 'absolute';
+      div.style.position = "absolute";
       document.body.appendChild(div);
       div.textContent = email.value.substr(0, carPos);
-      span.textContent = email.value.substr(carPos) || '.';
+      span.textContent = email.value.substr(carPos) || ".";
       div.appendChild(span);
-      
-      if(email.scrollWidth <= emailScrollMax) {
+
+      if (email.scrollWidth <= emailScrollMax) {
         caretCoords = getPosition(span);
         dFromC = screenCenter - (caretCoords.x + emailCoords.x);
-        eyeLAngle = getAngle(eyeLCoords.x, eyeLCoords.y, emailCoords.x + caretCoords.x, emailCoords.y + 25);
-        eyeRAngle = getAngle(eyeRCoords.x, eyeRCoords.y, emailCoords.x + caretCoords.x, emailCoords.y + 25);
-        noseAngle = getAngle(noseCoords.x, noseCoords.y, emailCoords.x + caretCoords.x, emailCoords.y + 25);
-        mouthAngle = getAngle(mouthCoords.x, mouthCoords.y, emailCoords.x + caretCoords.x, emailCoords.y + 25);
+        eyeLAngle = getAngle(
+          eyeLCoords.x,
+          eyeLCoords.y,
+          emailCoords.x + caretCoords.x,
+          emailCoords.y + 25
+        );
+        eyeRAngle = getAngle(
+          eyeRCoords.x,
+          eyeRCoords.y,
+          emailCoords.x + caretCoords.x,
+          emailCoords.y + 25
+        );
+        noseAngle = getAngle(
+          noseCoords.x,
+          noseCoords.y,
+          emailCoords.x + caretCoords.x,
+          emailCoords.y + 25
+        );
+        mouthAngle = getAngle(
+          mouthCoords.x,
+          mouthCoords.y,
+          emailCoords.x + caretCoords.x,
+          emailCoords.y + 25
+        );
       } else {
-        eyeLAngle = getAngle(eyeLCoords.x, eyeLCoords.y, emailCoords.x + emailScrollMax, emailCoords.y + 25);
-        eyeRAngle = getAngle(eyeRCoords.x, eyeRCoords.y, emailCoords.x + emailScrollMax, emailCoords.y + 25);
-        noseAngle = getAngle(noseCoords.x, noseCoords.y, emailCoords.x + emailScrollMax, emailCoords.y + 25);
-        mouthAngle = getAngle(mouthCoords.x, mouthCoords.y, emailCoords.x + emailScrollMax, emailCoords.y + 25);
+        eyeLAngle = getAngle(
+          eyeLCoords.x,
+          eyeLCoords.y,
+          emailCoords.x + emailScrollMax,
+          emailCoords.y + 25
+        );
+        eyeRAngle = getAngle(
+          eyeRCoords.x,
+          eyeRCoords.y,
+          emailCoords.x + emailScrollMax,
+          emailCoords.y + 25
+        );
+        noseAngle = getAngle(
+          noseCoords.x,
+          noseCoords.y,
+          emailCoords.x + emailScrollMax,
+          emailCoords.y + 25
+        );
+        mouthAngle = getAngle(
+          mouthCoords.x,
+          mouthCoords.y,
+          emailCoords.x + emailScrollMax,
+          emailCoords.y + 25
+        );
       }
-      
+
       eyeLX = Math.cos(eyeLAngle) * 7;
       eyeLY = Math.sin(eyeLAngle) * 10;
       eyeRX = Math.cos(eyeRAngle) * 7;
@@ -578,37 +631,87 @@ const YetiLogin = () => {
       mouthX = Math.cos(mouthAngle) * 12;
       mouthY = Math.sin(mouthAngle) * 10;
       mouthR = Math.cos(mouthAngle) * 3;
-      chinX = mouthX * .1;
-      chinY = mouthY * .5;
-      chinS = 1 - ((dFromC * .15) / 100);
-      if(chinS > 1) {
+      chinX = mouthX * 0.1;
+      chinY = mouthY * 0.5;
+      chinS = 1 - (dFromC * 0.15) / 100;
+      if (chinS > 1) {
         chinS = 1 - (chinS - 1);
-        if(chinS < chinMin) {
-          chinS = chinMin;	
+        if (chinS < chinMin) {
+          chinS = chinMin;
         }
       }
-      faceX = mouthX * .1;
-      faceY = mouthY * .4;
+      faceX = mouthX * 0.1;
+      faceY = mouthY * 0.4;
       faceSkew = Math.cos(mouthAngle) * 5;
       eyebrowSkew = Math.cos(mouthAngle) * 25;
       outerEarX = Math.cos(mouthAngle) * 4;
       outerEarY = Math.cos(mouthAngle) * 5;
       hairX = Math.cos(mouthAngle) * 4;
-      hairS = 1.2;	
-      
-      TweenMax.to(eyeL, 1, {x: -eyeLX , y: -eyeLY, ease: Expo.easeOut});
-      TweenMax.to(eyeR, 1, {x: -eyeRX , y: -eyeRY, ease: Expo.easeOut});
-      TweenMax.to(nose, 1, {x: -noseX, y: -noseY, rotation: mouthR, transformOrigin: "center center", ease: Expo.easeOut});
-      TweenMax.to(mouth, 1, {x: -mouthX , y: -mouthY, rotation: mouthR, transformOrigin: "center center", ease: Expo.easeOut});
-      TweenMax.to(chin, 1, {x: -chinX, y: -chinY, scaleY: chinS, ease: Expo.easeOut});
-      TweenMax.to(face, 1, {x: -faceX, y: -faceY, skewX: -faceSkew, transformOrigin: "center top", ease: Expo.easeOut});
-      TweenMax.to(eyebrow, 1, {x: -faceX, y: -faceY, skewX: -eyebrowSkew, transformOrigin: "center top", ease: Expo.easeOut});
-      TweenMax.to(outerEarL, 1, {x: outerEarX, y: -outerEarY, ease: Expo.easeOut});
-      TweenMax.to(outerEarR, 1, {x: outerEarX, y: outerEarY, ease: Expo.easeOut});
-      TweenMax.to(earHairL, 1, {x: -outerEarX, y: -outerEarY, ease: Expo.easeOut});
-      TweenMax.to(earHairR, 1, {x: -outerEarX, y: outerEarY, ease: Expo.easeOut});
-      TweenMax.to(hair, 1, {x: hairX, scaleY: hairS, transformOrigin: "center bottom", ease: Expo.easeOut});	
-        
+      hairS = 1.2;
+
+      TweenMax.to(eyeL, 1, { x: -eyeLX, y: -eyeLY, ease: Expo.easeOut });
+      TweenMax.to(eyeR, 1, { x: -eyeRX, y: -eyeRY, ease: Expo.easeOut });
+      TweenMax.to(nose, 1, {
+        x: -noseX,
+        y: -noseY,
+        rotation: mouthR,
+        transformOrigin: "center center",
+        ease: Expo.easeOut,
+      });
+      TweenMax.to(mouth, 1, {
+        x: -mouthX,
+        y: -mouthY,
+        rotation: mouthR,
+        transformOrigin: "center center",
+        ease: Expo.easeOut,
+      });
+      TweenMax.to(chin, 1, {
+        x: -chinX,
+        y: -chinY,
+        scaleY: chinS,
+        ease: Expo.easeOut,
+      });
+      TweenMax.to(face, 1, {
+        x: -faceX,
+        y: -faceY,
+        skewX: -faceSkew,
+        transformOrigin: "center top",
+        ease: Expo.easeOut,
+      });
+      TweenMax.to(eyebrow, 1, {
+        x: -faceX,
+        y: -faceY,
+        skewX: -eyebrowSkew,
+        transformOrigin: "center top",
+        ease: Expo.easeOut,
+      });
+      TweenMax.to(outerEarL, 1, {
+        x: outerEarX,
+        y: -outerEarY,
+        ease: Expo.easeOut,
+      });
+      TweenMax.to(outerEarR, 1, {
+        x: outerEarX,
+        y: outerEarY,
+        ease: Expo.easeOut,
+      });
+      TweenMax.to(earHairL, 1, {
+        x: -outerEarX,
+        y: -outerEarY,
+        ease: Expo.easeOut,
+      });
+      TweenMax.to(earHairR, 1, {
+        x: -outerEarX,
+        y: outerEarY,
+        ease: Expo.easeOut,
+      });
+      TweenMax.to(hair, 1, {
+        x: hairX,
+        scaleY: hairS,
+        transformOrigin: "center bottom",
+        ease: Expo.easeOut,
+      });
+
       document.body.removeChild(div);
     };
 
@@ -634,94 +737,169 @@ const YetiLogin = () => {
 
     const coverEyes = () => {
       TweenMax.killTweensOf([armL, armR]);
-      TweenMax.set([armL, armR], {visibility: "visible"});
-      TweenMax.to(armL, .45, {x: -93, y: 10, rotation: 0, ease: Quad.easeOut});
-      TweenMax.to(armR, .45, {x: -93, y: 10, rotation: 0, ease: Quad.easeOut, delay: .1});
-      TweenMax.to(bodyBG, .45, {morphSVG: bodyBGchanged, ease: Quad.easeOut});
+      TweenMax.set([armL, armR], { visibility: "visible" });
+      TweenMax.to(armL, 0.45, {
+        x: -93,
+        y: 10,
+        rotation: 0,
+        ease: Quad.easeOut,
+      });
+      TweenMax.to(armR, 0.45, {
+        x: -93,
+        y: 10,
+        rotation: 0,
+        ease: Quad.easeOut,
+        delay: 0.1,
+      });
+      TweenMax.to(bodyBG, 0.45, {
+        morphSVG: bodyBGchanged,
+        ease: Quad.easeOut,
+      });
       eyesCovered = true;
     };
-    
+
     const uncoverEyes = () => {
       TweenMax.killTweensOf([armL, armR]);
-      TweenMax.to(armL, 1.35, {y: 220, ease: Quad.easeOut});
-      TweenMax.to(armL, 1.35, {rotation: 105, ease: Quad.easeOut, delay: .1});
-      TweenMax.to(armR, 1.35, {y: 220, ease: Quad.easeOut});
-      TweenMax.to(armR, 1.35, {rotation: -50 , ease: Quad.easeOut, delay: .1, onComplete: function() {
-        TweenMax.set([armL, armR], {visibility: "hidden"});
-      }});
-      TweenMax.to(bodyBG, .45, {morphSVG: bodyBG, ease: Quad.easeOut});
+      TweenMax.to(armL, 1.35, { y: 220, ease: Quad.easeOut });
+      TweenMax.to(armL, 1.35, {
+        rotation: 105,
+        ease: Quad.easeOut,
+        delay: 0.1,
+      });
+      TweenMax.to(armR, 1.35, { y: 220, ease: Quad.easeOut });
+      TweenMax.to(armR, 1.35, {
+        rotation: -50,
+        ease: Quad.easeOut,
+        delay: 0.1,
+        onComplete: function () {
+          TweenMax.set([armL, armR], { visibility: "hidden" });
+        },
+      });
+      TweenMax.to(bodyBG, 0.45, { morphSVG: bodyBG, ease: Quad.easeOut });
       eyesCovered = false;
     };
-    
 
     const resetFace = () => {
-      TweenMax.to([eyeL, eyeR], 1, {x: 0, y: 0, ease: Expo.easeOut});
-      TweenMax.to(nose, 1, {x: 0, y: 0, scaleX: 1, scaleY: 1, ease: Expo.easeOut});
-      TweenMax.to(mouth, 1, {x: 0, y: 0, rotation: 0, ease: Expo.easeOut});
-      TweenMax.to(chin, 1, {x: 0, y: 0, scaleY: 1, ease: Expo.easeOut});
-      TweenMax.to([face, eyebrow], 1, {x: 0, y: 0, skewX: 0, ease: Expo.easeOut});
-      TweenMax.to([outerEarL, outerEarR, earHairL, earHairR, hair], 1, {x: 0, y: 0, scaleY: 1, ease: Expo.easeOut});
+      TweenMax.to([eyeL, eyeR], 1, { x: 0, y: 0, ease: Expo.easeOut });
+      TweenMax.to(nose, 1, {
+        x: 0,
+        y: 0,
+        scaleX: 1,
+        scaleY: 1,
+        ease: Expo.easeOut,
+      });
+      TweenMax.to(mouth, 1, { x: 0, y: 0, rotation: 0, ease: Expo.easeOut });
+      TweenMax.to(chin, 1, { x: 0, y: 0, scaleY: 1, ease: Expo.easeOut });
+      TweenMax.to([face, eyebrow], 1, {
+        x: 0,
+        y: 0,
+        skewX: 0,
+        ease: Expo.easeOut,
+      });
+      TweenMax.to([outerEarL, outerEarR, earHairL, earHairR, hair], 1, {
+        x: 0,
+        y: 0,
+        scaleY: 1,
+        ease: Expo.easeOut,
+      });
     };
 
     const startBlinking = (delay = 1) => {
-      if(delay) {
+      if (delay) {
         delay = getRandomInt(delay);
       } else {
         delay = 1;
       }
-      blinking = TweenMax.to([eyeL, eyeR], .1, {delay: delay, scaleY: 0, yoyo: true, repeat: 1, transformOrigin: "center center", onComplete: function() {
-        startBlinking(12);
-      }});
+      blinking = TweenMax.to([eyeL, eyeR], 0.1, {
+        delay: delay,
+        scaleY: 0,
+        yoyo: true,
+        repeat: 1,
+        transformOrigin: "center center",
+        onComplete: function () {
+          startBlinking(12);
+        },
+      });
     };
 
     const stopBlinking = () => {
       blinking.kill();
       blinking = null;
-      TweenMax.set([eyeL, eyeR], {scaleY: eyeScale});
+      TweenMax.set([eyeL, eyeR], { scaleY: eyeScale });
     };
 
-    const getRandomInt=(max)=> {
+    const getRandomInt = (max) => {
       return Math.floor(Math.random() * Math.floor(max));
-    }
-
+    };
 
     const onEmailInput = (e) => {
       calculateFaceMove(e);
       var value = email.value;
       curEmailIndex = value.length;
-      
+
       // very crude email validation to trigger effects
-      if(curEmailIndex > 0) {
-        if(mouthStatus == "small") {
+      if (curEmailIndex > 0) {
+        if (mouthStatus == "small") {
           mouthStatus = "medium";
-          TweenMax.to([mouthBG, mouthOutline, mouthMaskPath], 1, {morphSVG: mouthMediumBG, shapeIndex: 8, ease: Expo.easeOut});
-          TweenMax.to(tooth, 1, {x: 0, y: 0, ease: Expo.easeOut});
-          TweenMax.to(tongue, 1, {x: 0, y: 1, ease: Expo.easeOut});
-          TweenMax.to([eyeL, eyeR], 1, {scaleX: .85, scaleY: .85, ease: Expo.easeOut});
-          eyeScale = .85;
+          TweenMax.to([mouthBG, mouthOutline, mouthMaskPath], 1, {
+            morphSVG: mouthMediumBG,
+            shapeIndex: 8,
+            ease: Expo.easeOut,
+          });
+          TweenMax.to(tooth, 1, { x: 0, y: 0, ease: Expo.easeOut });
+          TweenMax.to(tongue, 1, { x: 0, y: 1, ease: Expo.easeOut });
+          TweenMax.to([eyeL, eyeR], 1, {
+            scaleX: 0.85,
+            scaleY: 0.85,
+            ease: Expo.easeOut,
+          });
+          eyeScale = 0.85;
         }
-        if(value.includes("@")) {
+        if (value.includes("@")) {
           mouthStatus = "large";
-          TweenMax.to([mouthBG, mouthOutline, mouthMaskPath], 1, {morphSVG: mouthLargeBG, ease: Expo.easeOut});
-          TweenMax.to(tooth, 1, {x: 3, y: -2, ease: Expo.easeOut});
-          TweenMax.to(tongue, 1, {y: 2, ease: Expo.easeOut});
-          TweenMax.to([eyeL, eyeR], 1, {scaleX: .65, scaleY: .65, ease: Expo.easeOut, transformOrigin: "center center"});
-          eyeScale = .65;
+          TweenMax.to([mouthBG, mouthOutline, mouthMaskPath], 1, {
+            morphSVG: mouthLargeBG,
+            ease: Expo.easeOut,
+          });
+          TweenMax.to(tooth, 1, { x: 3, y: -2, ease: Expo.easeOut });
+          TweenMax.to(tongue, 1, { y: 2, ease: Expo.easeOut });
+          TweenMax.to([eyeL, eyeR], 1, {
+            scaleX: 0.65,
+            scaleY: 0.65,
+            ease: Expo.easeOut,
+            transformOrigin: "center center",
+          });
+          eyeScale = 0.65;
           stopBlinking();
         } else {
           mouthStatus = "medium";
-          TweenMax.to([mouthBG, mouthOutline, mouthMaskPath], 1, {morphSVG: mouthMediumBG, ease: Expo.easeOut});
-          TweenMax.to(tooth, 1, {x: 0, y: 0, ease: Expo.easeOut});
-          TweenMax.to(tongue, 1, {x: 0, y: 1, ease: Expo.easeOut});
-          TweenMax.to([eyeL, eyeR], 1, {scaleX: .85, scaleY: .85, ease: Expo.easeOut});
-          eyeScale = .85;
+          TweenMax.to([mouthBG, mouthOutline, mouthMaskPath], 1, {
+            morphSVG: mouthMediumBG,
+            ease: Expo.easeOut,
+          });
+          TweenMax.to(tooth, 1, { x: 0, y: 0, ease: Expo.easeOut });
+          TweenMax.to(tongue, 1, { x: 0, y: 1, ease: Expo.easeOut });
+          TweenMax.to([eyeL, eyeR], 1, {
+            scaleX: 0.85,
+            scaleY: 0.85,
+            ease: Expo.easeOut,
+          });
+          eyeScale = 0.85;
         }
       } else {
         mouthStatus = "small";
-        TweenMax.to([mouthBG, mouthOutline, mouthMaskPath], 1, {morphSVG: mouthSmallBG, shapeIndex: 9, ease: Expo.easeOut});
-        TweenMax.to(tooth, 1, {x: 0, y: 0, ease: Expo.easeOut});
-        TweenMax.to(tongue, 1, {y: 0, ease: Expo.easeOut});
-        TweenMax.to([eyeL, eyeR], 1, {scaleX: 1, scaleY: 1, ease: Expo.easeOut});
+        TweenMax.to([mouthBG, mouthOutline, mouthMaskPath], 1, {
+          morphSVG: mouthSmallBG,
+          shapeIndex: 9,
+          ease: Expo.easeOut,
+        });
+        TweenMax.to(tooth, 1, { x: 0, y: 0, ease: Expo.easeOut });
+        TweenMax.to(tongue, 1, { y: 0, ease: Expo.easeOut });
+        TweenMax.to([eyeL, eyeR], 1, {
+          scaleX: 1,
+          scaleY: 1,
+          ease: Expo.easeOut,
+        });
         eyeScale = 1;
       }
     };
@@ -735,7 +913,6 @@ const YetiLogin = () => {
         password.type = "password";
         closeFingers();
       }
-      
     };
 
     const handleEmailFocus = (e) => {
@@ -746,10 +923,10 @@ const YetiLogin = () => {
 
     const handleEmailBlur = (e) => {
       activeElement = null;
-      setTimeout(function() {
-        if(activeElement == "email") {
+      setTimeout(function () {
+        if (activeElement == "email") {
         } else {
-          if(e.target.value == "") {
+          if (e.target.value == "") {
             e.target.parentElement.classList.remove("focusWithText");
           }
           //startBlinking();
@@ -782,22 +959,23 @@ const YetiLogin = () => {
       email.removeEventListener("blur", handleEmailBlur);
       email.removeEventListener("input", onEmailInput);
       password.removeEventListener("focus", handlePasswordFocus);
-      password.removeEventListener("blur",()=>{handlePasswordBlur;onComplete: () => {
-        TweenMax.set([armL, armR], { visibility: "hidden" });
-      }});
+      password.removeEventListener("blur", () => {
+        handlePasswordBlur;
+        onComplete: () => {
+          TweenMax.set([armL, armR], { visibility: "hidden" });
+        };
+      });
       showPasswordCheck.removeEventListener("change", togglePassword);
     };
   }, []);
 
-  
   const handleSubmit = async (e) => {
     e.preventDefault(); // Move this to the top for safety
-  
+
     const email = emailRef.current.value.trim();
     const password = passwordRef.current.value;
-  
-    try {
 
+    try {
       const response = await axios.post(
         "http://localhost:5000/login",
         { email, password },
@@ -807,10 +985,10 @@ const YetiLogin = () => {
           },
         }
       );
-  
+
       // Save token to localStorage
       localStorage.setItem("token", response.data.token);
-  
+
       // Redirect to home page
       window.location.href = "/";
     } catch (error) {
@@ -819,36 +997,44 @@ const YetiLogin = () => {
       alert("Login failed: " + message);
     }
   };
-  
+
   return (
     <div className="login_pag">
-    <form onSubmit={handleSubmit}>
-      <div className="svgContainer">
-        <div>
-          <SVGComponent ref={svgRef} /> 
+      <form onSubmit={handleSubmit}>
+        <div className="svgContainer">
+          <div>
+            <SVGComponent ref={svgRef} />
+          </div>
         </div>
-      </div>
 
-      <div className="inputGroup inputGroup1">
-        <label htmlFor="loginEmail" id="loginEmailLabel">Email</label>
-        <input ref={emailRef} type="email" id="loginEmail" maxLength="254"  />
-        <p className="helper helper1">Email@gmail.com</p>
-      </div>
+        <div className="inputGroup inputGroup1">
+          <label htmlFor="loginEmail" id="loginEmailLabel">
+            Email
+          </label>
+          <input ref={emailRef} type="email" id="loginEmail" maxLength="254" />
+          <p className="helper helper1">Email@gmail.com</p>
+        </div>
 
-      <div className="inputGroup inputGroup2">
-        <label htmlFor="loginPassword" id="loginPasswordLabel">Password</label>
-        <input ref={passwordRef} type="password" id="loginPassword" />
-        <label id="showPasswordToggle" htmlFor="showPasswordCheck">
-          Show
-          <input ref={showPasswordCheckRef} id="showPasswordCheck" type="checkbox" />
-          <div className="indicator"></div>
-        </label>
-      </div>
+        <div className="inputGroup inputGroup2">
+          <label htmlFor="loginPassword" id="loginPasswordLabel">
+            Password
+          </label>
+          <input ref={passwordRef} type="password" id="loginPassword" />
+          <label id="showPasswordToggle" htmlFor="showPasswordCheck">
+            Show
+            <input
+              ref={showPasswordCheckRef}
+              id="showPasswordCheck"
+              type="checkbox"
+            />
+            <div className="indicator"></div>
+          </label>
+        </div>
 
-      <div className="inputGroup inputGroup3">
-        <button id="login">Log in</button>
-      </div>
-    </form>
+        <div className="inputGroup inputGroup3">
+          <button id="login">Log in</button>
+        </div>
+      </form>
     </div>
   );
 };
