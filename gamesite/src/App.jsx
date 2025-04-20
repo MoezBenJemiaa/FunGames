@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./home/home";
 import LoginPage from "./login/YetiLogin";
-import Header from "./header/header";
 
 function App() {
   return (

@@ -306,3 +306,48 @@
   text-align: right;
 }
 
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.162);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.popupContent {
+  border-radius: 1.5rem;
+  max-width: 27rem; /* same as the original .container */
+  width: 100%;
+  max-height: 90vh;
+  padding: 1.5rem;
+  overflow: hidden; /* removes scrolling */
+  position: relative;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  text-align: center;
+
+  /* Hide scrollbar for all major browsers */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+.popupContent::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+
+
+.closeButton {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
