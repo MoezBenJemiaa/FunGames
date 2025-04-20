@@ -1,41 +1,62 @@
+@font-face {
+  font-family: "FinalDraft";
+  src: url("../assets/Final Draft.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 .container {
-  font-family: sans-serif;
+  font-family: "FinalDraft", sans-serif;
   background-color: #f8f9fa;
 }
 
 .section {
-  padding: 80px 20px;
+  padding: 4rem 1.25rem;
   text-align: center;
-  background-color: #fff;
-  border-bottom: 1px solid #ddd;
-}
-
-.section:nth-child(even) {
-  background-color: #f1f1f1;
+  background-color: #ffba58;
 }
 
 .section h1,
 .section h2 {
+  margin: auto;
   margin-bottom: 20px;
-
+  color: white;
+  -webkit-text-stroke: 4px black;
+  font-size: 5rem;
+  max-width: 1000px;
+  text-align: left;
+}
+.section h1 {
+  margin: 8rem auto 6rem;
+  font-size: 7rem;
+  text-align: center;
 }
 
-.section p {
-  max-width: 600px;
-  margin: 0 auto;
+.coloredBox {
+  background-color: white;
+  border: 2px solid black;
+  width: max-content;
+  padding: 1.5rem;
+  border-radius: 16px;
+  font-size: 1.5rem;
+  text-align: center;
+  color: black;
+  position: relative;
+  bottom: 30%;
+  left: 72%;
+  transform: translateX(-50%);
 }
 
 /* 🔄 Scrolling Bar */
 
 .scrollingBar {
-  
-  background-color: #333;
-  color: #fff;
+  background-color: #ffffff;
+  color: #000000;
   font-weight: bold;
   padding: 12px 0;
   position: relative;
   white-space: nowrap;
-  width: 100%; 
+  width: 100%;
 }
 
 .scrollWrapper {
@@ -43,7 +64,6 @@
 }
 
 .scrollContent {
-  display: inline-block;
   padding-left: 100%; /* Ensure smooth start from the right */
   animation: scroll 40s linear infinite;
 }
@@ -57,48 +77,232 @@
   }
 }
 
-.cardContainer {
+.gameContainer {
+  max-width: 1000px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
   margin-top: 1rem;
+  margin: 2rem auto;
+}
+
+.contactWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 0 22px;
+  width: 1000px;
+  margin: auto;
 }
 
 .registerForm {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  max-width: 400px;
-  margin: 1rem auto;
+  width: 300px;
 }
 
 .input {
-  padding: 0.75rem;
+  padding: 0.75rem 1rem;
   font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  border: 2px solid #000;
+  border-radius: 50px;
+  font-family: sans-serif;
+  font-weight: bold;
+  color: #333;
 }
 
+.input:focus {
+  border: 3px solid #00aeff;
+  outline: none; /* Optional: removes default browser outline */
+}
+
+.registerForm textarea {
+  height: 60px;
+  border: #000 solid 2px;
+  border-radius: 16px;
+  padding: 0.75rem;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  resize: none;
+}
 .button {
-  background-color: #646cff;
+  background-color: #0060ff;
   color: white;
   border: none;
   padding: 0.75rem;
-  font-size: 1rem;
-  border-radius: 8px;
+  font-size: 1.1rem;
+  border: #000 solid 2px;
+  border-radius: 50px;
+  box-shadow: 3px 3px 0 #000;
   cursor: pointer;
   transition: background-color 0.3s;
+  font-family: "FinalDraft", sans-serif;
 }
 
 .button:hover {
-  background-color: #4e54d3;
+  background-color: #1e77d3;
 }
 
 .heroBackground {
-  background-image: url('../assets/Village by the lake.jpg');
+  background-image: url("../assets/Village by the lake.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  color: white ; /* optional: improves text readability */
 }
+
+.shopBackground {
+  background-image: url("../assets/shop.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 130px;
+  width: 600px;
+  border: #000 solid 3px;
+  border-radius: 1rem;
+}
+
+.homesBackground {
+  background-image: url("../assets/homes.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.pixelbgBackground {
+  background-image: url("../assets/pixelbg.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.rabitBackground {
+  background-image: url("../assets/rabbit.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 80%;
+  border: #000 solid;
+  border-radius: 16px;
+}
+
+.campfireBackground {
+  background-image: url("../assets/campfire.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat;
+  border: #000 solid;
+  border-radius: 16px;
+  height: 150px;
+  width: 40%;
+  align-self: right;
+  box-sizing: border-box;
+}
+
+.customFont {
+  font-family: "FinalDraft", sans-serif;
+}
+
+.wrapper {
+  background-color: #fbbd64; /* warm orange background */
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 1000px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: space-between;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid #333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: 1.2rem;
+  height: 150px;
+  box-sizing: border-box;
+}
+
+.cardBlue {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #65b0ff;
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid #333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: 1rem;
+  height: 150px;
+  box-sizing: border-box;
+}
+
+.cardBlue strong {
+  color: white;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+}
+
+.cardBlue:first-of-type {
+  width: 400px;
+}
+
+.outlinedText {
+  color: white; /* Inside color */
+  -webkit-text-stroke: 1px black; /* Stroke width and color */
+  font-weight: bold; /* Adjust as needed */
+}
+
+.footer {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #333;
+  padding: 1rem 0;
+  color: white;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  height: 400px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.footerText {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+
+
+.privacyText,
+.copyrightText {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.privacyText {
+  font-style: italic;
+}
+
+.copyrightText {
+  text-align: right;
+}
+
