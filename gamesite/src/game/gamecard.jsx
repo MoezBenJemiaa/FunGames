@@ -5,7 +5,7 @@ const GameCard = ({ image, title, link }) => {
   return (
     <div className={styles.card}>
       <img src={image} alt={title} className={styles.image} />
-      <h3 className={styles.title}>{title}</h3>
+      <div className={styles.title}>{title}</div>
       <a href={link} className={styles.playButton}>Play</a>
     </div>
   );
