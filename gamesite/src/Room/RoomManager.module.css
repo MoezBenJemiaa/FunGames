@@ -9,7 +9,6 @@
   text-align: center;
   font-family: 'Comic Sans MS', cursive, sans-serif;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-  border: 3px dashed #fbbf24;
   position: relative;
   scrollbar-width: none;
 }
