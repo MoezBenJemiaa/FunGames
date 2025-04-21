@@ -27,6 +27,8 @@ app.use("/room", require("./routes/room"));
 
 const Room = require("./models/Room");
 let roomPlayers = {};
+let roomTurns = {};
+let startingTurn;
 
 io.on("connection", (socket) => {
   console.log("🔌 New client connected:", socket.id);
@@ -41,12 +43,18 @@ io.on("connection", (socket) => {
 
   socket.on("choesTurn", (roomCode) => {
     console.log(`🌀 Choosing turn for room ${roomCode}`);
-    const startingTurn = Math.random() < 0.5 ? "X" : "O";
+    startingTurn = Math.random() < 0.5 ? "X" : "O";
     io.to(roomCode).emit("choesTurn", startingTurn);
   });
   socket.on("gameOver", ({ roomCode, winner }) => {
     socket.to(roomCode).emit("gameOver", winner);
   });
+  socket.on("resetGame", (roomCode) => {
+    // Reset game state for all players in the room
+      io.to(roomCode).emit("resetGame");
+    
+  });
+  
   
   socket.on("startGame", (roomCode) => {
     const symbols = ["X", "O"];
@@ -86,6 +94,47 @@ io.on("connection", (socket) => {
     }
   });
 
+
+
+  socket.on("guessLetter", async ({ roomCode, letter, isCorrect, symbol }) => {
+    console.log(`Starting turn for room ${roomCode}: ${startingTurn}`);
+    console.log(`Player's symbol: ${symbol}`);
+    
+    // Validate that the player is guessing in the correct turn
+    if (symbol !== startingTurn) {
+      console.warn(`⛔ ${socket.id} (symbol: ${symbol}) tried to guess out of turn in room ${roomCode}`);
+      return;
+    }
+  
+    try {
+      const roomDoc = await Room.findOne({ code: roomCode });
+      if (!roomDoc || !roomDoc.players) {
+        console.warn(`⚠️ Could not find valid player data for room ${roomCode}`);
+        return;
+      }
+  
+      // Emit the guess letter event to all players in the room
+  
+      // If incorrect, toggle the turn and update startingTurn
+      if (!isCorrect) {
+        startingTurn = startingTurn === "X" ? "O" : "X"; // Toggle between X and O
+        console.log(`🎮 Turn changed to ${startingTurn} in room ${roomCode}`);
+        
+        // Emit to all players in the room
+        io.to(roomCode).emit("guessLetter", { letter, isCorrect });
+        io.to(roomCode).emit("choesTurn", startingTurn);
+      }
+      else{
+        startingTurn = startingTurn === "X" ? "O" : "X"; // Toggle between X and O
+        io.to(roomCode).emit("guessLetter", { letter, isCorrect });
+        io.to(roomCode).emit("choesTurn", startingTurn);
+
+      }
+    } catch (err) {
+      console.error("❌ Error handling guessLetter:", err);
+    }
+  });
+  
   socket.on("disconnect", () => {
     console.log("❌ Client disconnected:", socket.id);
     for (const [roomCode, players] of Object.entries(roomPlayers)) {
