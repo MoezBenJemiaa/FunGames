@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/game/:roomCode" element={<Hungman/>} />
+        <Route path="/game/:roomCode" element={<Hungman/>/*TODO*/} />
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>
