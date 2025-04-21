@@ -2,47 +2,160 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  font-family: sans-serif;
+  padding: 2rem;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  background: radial-gradient(circle at center, #ffe680, #ffcc66);
+  min-height: 100vh;
 }
 
-.status {
-  font-size: 1.2rem;
-  font-weight: bold;
+.title {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: #ff6347;
+  text-shadow: 2px 2px #fff;
 }
 
 .board {
   display: grid;
-  grid-template-columns: repeat(3, 60px);
-  grid-template-rows: repeat(3, 60px);
-  gap: 8px;
-
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 10px;
+  background-color: #ffda7a;
+  padding: 1rem;
+  border: 5px dashed #f57c00;
+  border-radius: 20px;
 }
 
 .cell {
-  width: 60px;
-  height: 60px;
-  font-size: 24px;
-  font-weight: bold;
+  width: 100px;
+  height: 100px;
+  background-color: #fff3e0;
+  font-size: 2.5rem;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 3px solid #f57c00;
+  border-radius: 15px;
+  transition: transform 0.2s ease;
+  z-index: 1;
+  position: relative;
+}
+
+.cell:hover {
+  transform: scale(1.05);
+  background-color: #ffe0b2;
+}
+
+.xCell {
+  color: #42a5f5;
+  text-shadow: 1px 1px #90caf9;
+}
+
+.oCell {
+  color: #ef5350;
+  text-shadow: 1px 1px #f8bbd0;
+}
+
+.popup {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  background: #fffbe6;
+  border: 3px solid #ffca28;
+  border-radius: 20px;
   text-align: center;
-  background-color: #ffffff;
-  border: 2px solid #ccc;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  color: black;
+  animation: popIn 0.3s ease-in-out;
 }
 
+.popup h2 {
+  margin: 0 0 1rem;
+  font-size: 2rem;
+  color: #ff7043;
+}
 
-.restartButton {
-  padding: 8px 16px;
-  background-color: #0070f3;
-  color: white;
+.popup button {
+  background-color: #29b6f6;
   border: none;
-  border-radius: 6px;
-  font-weight: bold;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  color: white;
+  border-radius: 10px;
   cursor: pointer;
+  transition: background 0.2s;
 }
 
-.restartButton:hover {
-  background-color: #0059c1;
+.popup button:hover {
+  background-color: #0288d1;
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.turnMessage {
+  font-size: 1.5rem;
+  color: #29b6f6;
+  font-weight: bold;
+  background-color: #ffcc80;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.players {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.playerInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fffae3;
+  padding: 10px;
+  border: 3px dashed #ff6f61;
+  border-radius: 20px;
+  box-shadow: 4px 4px 0 #222;
+  transition: transform 0.2s ease;
+}
+
+.playerInfo:hover {
+  transform: scale(1.05);
+}
+
+.playerInfo img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #5ab9ea;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+.playerInfo p {
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  text-shadow: 1px 1px #fff;
+}
+
+.round {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #666;
 }

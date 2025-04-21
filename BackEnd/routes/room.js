@@ -45,5 +45,18 @@ router.post("/join", async (req, res) => {
 
   res.json({ message: "Joined room", room });
 });
+router.delete("/delete/:code", async (req, res) => {
+  const { code } = req.params;
+  await Room.deleteOne({ code });
+  res.json({ message: "Room deleted" });
+});
+// Get Room Info
+router.get("/:code", async (req, res) => {
+  const { code } = req.params;
+  const room = await Room.findOne({ code });
+  if (!room) return res.status(404).json({ message: "Room not found" });
+  res.json(room);
+});
+
 
 module.exports = router;
