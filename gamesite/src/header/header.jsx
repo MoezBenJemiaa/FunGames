@@ -4,14 +4,20 @@ import { Link } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa"; // User icon
 
 const Header = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true); // Simulated login state
+  const [isLoggedIn, setIsLoggedIn] = useState(() => {
+      const token = localStorage.getItem("token");
+
+      if (token) {
+        return true;
+      }
+      return false; }
+  ); // Simulated login state
   const [showPopup, setShowPopup] = useState(false);
   const popupRef = useRef(null); // ⬅️ reference for popup
 
   const handleLogout = () => {
+    localStorage.clear();
     setIsLoggedIn(false);
-    setShowPopup(false);
-    // Add real logout logic here
   };
 
   const togglePopup = () => {

@@ -1,0 +1,131 @@
+.container {
+  padding: 1.5rem;
+  background-color: #fff4dc;
+  border-radius: 1.5rem;
+  max-width: 27rem; /* smaller width to help it fit */
+  max-height: 80vh; /* ensures it fits within the viewport */
+  overflow-y: auto;  /* scroll inside if content ever exceeds height */
+  margin: 2rem auto;
+  text-align: center;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  border: 3px dashed #fbbf24;
+  position: relative;
+  scrollbar-width: none;
+}
+
+
+
+.title {
+  font-size: 2.5rem;
+  color: #ec4899;
+  margin-bottom: 1.5rem;
+  text-shadow: 1px 2px 0 #fff;
+}
+
+.tabBar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.tab {
+  padding: 0.6rem 1.2rem;
+  border: 3px solid #a855f7;
+  background-color: #f3e8ff;
+  color: #6d28d9;
+  cursor: pointer;
+  font-size: 1rem;
+  margin: 0 0.5rem;
+  border-radius: 1rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.activeTab {
+  background-color: #a855f7;
+  color: white;
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.input,
+.select {
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  border-radius: 1rem;
+  border: 2px solid #facc15;
+  font-size: 1rem;
+  box-shadow: inset 0 2px 4px #fcd34d;
+  background-color: #fffde7;
+}
+
+.label {
+  font-size: 1rem;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.characterGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.characterCard {
+  padding: 0.5rem;
+  background-color: #fef9c3;
+  border-radius: 1rem;
+  border: 3px solid #facc15;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.characterCard:hover {
+  transform: scale(1.05);
+}
+
+.selected {
+  background-color: #fcd34d;
+  border-color: #fbbf24;
+  transform: scale(1.08);
+}
+
+.characterImage {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  margin-bottom: 0.3rem;
+  border: 2px solid #f59e0b;
+}
+
+.actionButton {
+  background-color: #ec4899;
+  color: white;
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 1.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.actionButton:hover {
+  background-color: #db2777;
+  transform: translateY(-2px);
+}
+.popupContent {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Optional: Disable background scroll when popup is open */
+body.popup-open {
+  overflow: hidden;
+}
