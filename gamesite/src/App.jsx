@@ -4,6 +4,7 @@ import HomePage from "./home/home";
 import LoginPage from "./login/YetiLogin";
 import Xo from "./xo/xoboard";
 import Hungman from "./hangman/hangman";
+import Snake from "./Snake/snake";
 import NotFoundPage from "./404/404";
 
 
@@ -46,6 +47,7 @@ function App() {
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/game/:roomCode" element={<GameRouteHandler />} />
         <Route path="/" element={<HomePage />} />
+        <Route path="/Snake" element={<Snake />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>
     </>

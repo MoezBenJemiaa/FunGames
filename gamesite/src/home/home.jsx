@@ -88,7 +88,7 @@ const HomePage = () => {
         <div className={styles.gameContainer}>
           <GameCard title="XO" image={finnImage} onPlay={() => handlePlayClick("XO")} />
           <GameCard title="Hangman" image={bmoImage} onPlay={() => handlePlayClick("Hangman")} />
-          <GameCard title="3rd Game" image={jakeImage} onPlay={() => handlePlayClick("3rd Game")} />
+          <GameCard title="3rd Game" image={jakeImage} onPlay={() => window.location.href = "/Snake"} />
         </div>
       </section>
 

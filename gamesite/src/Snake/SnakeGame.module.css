@@ -1,0 +1,57 @@
+/* SnakeGame.module.css */
+.wrapper {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .canvas {
+    display: block;
+    background: linear-gradient(145deg, #fef9e7, #d4fc79);
+  }
+  
+  .popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    padding: 30px 50px;
+    text-align: center;
+    z-index: 10;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+  }
+  
+  .popup h1 {
+    font-size: 3rem;
+    color: #ff595e;
+  }
+  
+  .popup p {
+    font-size: 1.5rem;
+    color: #444;
+  }
+  
+  .buttons {
+    margin-top: 20px;
+  }
+  
+  .buttons button {
+    font-size: 1.3rem;
+    padding: 12px 25px;
+    margin: 0 15px;
+    border: none;
+    border-radius: 15px;
+    background-color: #7ED957;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .buttons button:hover {
+    transform: scale(1.1);
+  }
+  
