@@ -1,0 +1,55 @@
+.notFoundPage {
+	height: 100vh; width: 100vw;
+	margin: 0; padding: 0;
+	font-size: 16px; -webkit-font-smoothing: antialiased;
+	background-color: #09334f;
+	position: relative;
+}
+
+.notFoundPage #yetiSVG {
+	width: 600px; height: 470px;
+	position: absolute; top: 0; left: 0;
+	overflow: hidden;
+}
+.notFoundPage #lightSVG {
+	width: 600px; height: 470px;
+	position: absolute; top: 0; left: 0;
+	overflow: visible;
+}
+.notFoundPage .content{
+	padding: 5rem 3rem 0 25rem;
+	position: relative; z-index: 10;
+	font-family: 'Source Sans Pro', sans-serif; color: #FFF;
+	h3 {
+		margin: 0 0 .8rem;
+		font-size: 2.625rem; font-weight: 900; line-height: 120%;
+	}
+	p {
+		font-size: 1.25rem; font-weight: normal; line-height: 150%; color: #d1e2ed;
+		span {text-decoration: line-through;}
+	}
+}
+.notFoundPage .goHomeButton {
+	position: absolute;
+
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 1rem 2rem;
+	background-color: #09334f;
+	color: #d1e2ed;
+	font-size: 1.5rem;
+	font-weight: bold;
+	text-decoration: none;
+	text-align: center;
+	border-radius: 50px;
+	border: 2px solid black;
+	cursor: pointer;
+	transition: background-color 0.2s ease-in-out;
+	box-shadow: 2px 2px 0 #000;
+	z-index: 9999; /* ensures it's on top */
+  }
+  
+  .notFoundPage .goHomeButton:hover {
+	background-color: #d1e2ed;
+	color: #09334f;
+  }
