@@ -172,37 +172,42 @@ export default function RoomManager({ selectedGame = "XO" }) {
         </div>
       )}
 
-      {activeTab === 'join' && (
-        <div>
-          <input
-            value={joinCode}
-            onChange={e => setJoinCode(e.target.value)}
-            placeholder="Room Code"
-            className={styles.input}
-          />
-          <input
-            value={nickname}
-            onChange={e => setNickname(e.target.value)}
-            placeholder="Nickname"
-            className={styles.input}
-          />
+    {activeTab === 'join' && (
+    <div>
+      <input
+        value={joinCode}
+        onChange={e => setJoinCode(e.target.value)}
+        placeholder="Room Code"
+        className={styles.input}
+        disabled={playerJoined}
+      />
+      <input
+        value={nickname}
+        onChange={e => setNickname(e.target.value)}
+        placeholder="Nickname"
+        className={styles.input}
+        disabled={playerJoined}
+      />
 
-          <div className={styles.characterGrid}>
-            {characters.map(c => (
-              <div
-                key={c}
-                className={`${styles.characterCard} ${character === c ? styles.selected : ''}`}
-                onClick={() => handleCharacterSelect(c)}
-              >
-                <img src={characterImages[c]} alt={c} className={styles.characterImage} />
-                <p>{c}</p>
-              </div>
-            ))}
+      <div className={styles.characterGrid}>
+        {characters.map(c => (
+          <div
+            key={c}
+            className={`${styles.characterCard} ${character === c ? styles.selected : ''}`}
+            onClick={() => !playerJoined && handleCharacterSelect(c)}
+          >
+            <img src={characterImages[c]} alt={c} className={styles.characterImage} />
+            <p>{c}</p>
           </div>
+        ))}
+      </div>
 
-          <button onClick={joinRoom} className={styles.actionButton}>Join</button>
-        </div>
-      )}
+      {!playerJoined && (
+        <button onClick={joinRoom} className={styles.actionButton}>Join</button>
+      ) }
+      </div>
+    )}
+
 
       {roomCreated && !playerJoined && (
         <div>
