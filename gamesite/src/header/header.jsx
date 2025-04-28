@@ -41,16 +41,16 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <Link to="/" className={styles.logo}>
-        Fun Games:Moez & Rostom
+        Fun Games
       </Link>
       <nav className={styles.nav}>
-        <a href="#values" className={styles.link}>
+        <a href="/#values" className={styles.link}>
           Values
         </a>
-        <a href="#games" className={styles.link}>
+        <a href="/#games" className={styles.link}>
           Games
         </a>
-        <a href="#contact" className={styles.link}>
+        <a href="/#contact" className={styles.link}>
           Contact
         </a>
 
