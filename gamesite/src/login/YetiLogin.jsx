@@ -393,7 +393,7 @@ const YetiLogin = () => {
     // ✅ Custom Login Styles
     const login = document.createElement("link");
     login.rel = "stylesheet";
-    login.href = "./YetiLogin.css"; // this file must be in public/ folder
+    login.href = "./YetiLogin.css"; 
     head.appendChild(login);
 
     // ✅ CLEANUP
@@ -417,7 +417,7 @@ const YetiLogin = () => {
 
     if (!email || !password || !showPasswordCheck || !mySVG) return;
 
-    // ✅ Clean declaration and setup for SVG animation elements
+    
 
     const select = (cls) => mySVG.querySelector(cls);
 
@@ -506,7 +506,6 @@ const YetiLogin = () => {
     let emailScrollMax = email.scrollWidth;
     let dFromC = 1;
 
-    // ✅ Declare all used variables to avoid ReferenceError
     let eyeLAngle, eyeLX, eyeLY;
     let eyeRAngle, eyeRX, eyeRY;
     let noseAngle, noseX, noseY;
@@ -516,7 +515,6 @@ const YetiLogin = () => {
     let eyebrowSkew, outerEarX, outerEarY;
     let hairX, hairS;
 
-    // These declarations are now clean and you can use them inside your animation logic.
 
     const getPosition = (el) => {
       var xPos = 0;
