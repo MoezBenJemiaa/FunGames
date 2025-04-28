@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import styles from "./Profile.module.css";
 
 export default function ProfilePage() {
@@ -29,6 +30,10 @@ export default function ProfilePage() {
 
   return (
     <div className={styles.container}>
+      <a href="/" className={styles.goBackLink}>
+        &#8592; Go Back
+      </a>
+
       <form
         onSubmit={(e) => {
           e.preventDefault();

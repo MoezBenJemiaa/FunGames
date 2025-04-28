@@ -1,108 +1,150 @@
+@font-face {
+  font-family: "FinalDraft";
+  src: url("../assets/Final Draft.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 .container {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #f3f4f6;
-    padding: 1.5rem;
-  }
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #ffba58;
+  padding: 1.5rem;
+  font-family: "FinalDraft", sans-serif;
   
-  .form {
-    background: white;
-    padding: 2rem;
-    border-radius: 1.5rem;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
+}
+
+.form {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: white;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 3px 3px 0 #000;
   
-  .title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    text-align: center;
-  }
-  
-  .input {
-    padding: 0.75rem;
-    border: 1px solid #ccc;
-    border-radius: 0.75rem;
-    font-size: 1rem;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  .modifyButton {
-    padding: 0.75rem;
-    background-color: #2563eb;
-    color: white;
-    font-weight: 500;
-    border: none;
-    border-radius: 0.75rem;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-  
-  .modifyButton:hover {
-    background-color: #1d4ed8;
-  }
-  
-  .popupOverlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .popup {
-    background: white;
-    padding: 2rem;
-    border-radius: 1.5rem;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    max-width: 350px;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .popupTitle {
-    font-size: 1.25rem;
-    font-weight: 600;
-    text-align: center;
-  }
-  
-  .buttonGroup {
-    display: flex;
-    gap: 1rem;
-    justify-content: space-between;
-  }
-  
-  .cancelButton,
-  .confirmButton {
-    flex: 1;
-    padding: 0.6rem;
-    border: none;
-    border-radius: 0.75rem;
-    font-weight: 500;
-    cursor: pointer;
-  }
-  
-  .cancelButton {
-    background: #f3f4f6;
-    color: #333;
-  }
-  
-  .confirmButton {
-    background-color: #10b981;
-    color: white;
-  }
-  
-  .confirmButton:hover {
-    background-color: #059669;
-  }
-  
+}
+
+.title {
+  font-size: 2.9rem;
+  font-weight: 600;
+  text-align: center;
+  color: white;
+  -webkit-text-stroke: 3px black;
+  margin: 1rem 0;
+}
+
+.input {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #000;
+  border-radius: 50px;
+  font-family: sans-serif;
+  font-weight: bold;
+  color: #333;
+}
+
+.modifyButton {
+  background-color: #0060ff;
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  border: #000 solid 2px;
+  border-radius: 50px;
+  box-shadow: 3px 3px 0 #000;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: "FinalDraft", sans-serif;
+  margin-top: 0.5rem;
+}
+
+.modifyButton:hover {
+  background-color: #1d4ed8;
+}
+
+.popupOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup {
+  background: white;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.popupTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  color: #ffffff;
+  -webkit-text-stroke: 2px #000000;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+
+.cancelButton,
+.confirmButton {
+  flex: 1;
+  padding: 0.6rem;
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 #3a3a3a;
+}
+
+.cancelButton {
+  background: #f3f4f6;
+  color: #333;
+}
+
+.confirmButton {
+  background-color: #28a745;
+  color: white;
+}
+
+.confirmButton:hover {
+  background-color: #059669;
+}
+
+.goBackLink {
+  position: absolute;
+  top: 20px;
+  left: 40px;
+  color: #333;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  transition: background-color 0.3s;
+  box-shadow: 3px 3px 0 #000;
+  z-index: 1000; /* Make sure it's above other elements */
+}
+
+.goBackLink:hover {
+  background-color: #ddd;
+}
+
