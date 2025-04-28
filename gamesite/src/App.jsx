@@ -6,7 +6,7 @@ import Xo from "./xo/xoboard";
 import Hungman from "./hangman/hangman";
 import Snake from "./Snake/snake";
 import NotFoundPage from "./404/404";
-
+import ProfilePage from "./Profile/profile";
 
 function GameRouteHandler() {
   const { roomCode } = useParams();
@@ -49,6 +49,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/Snake" element={<Snake />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
     </>
   );
