@@ -969,6 +969,9 @@ const YetiLogin = () => {
     };
   }, []);
 
+  const [errorMessage, setErrorMessage] = useState("");
+  const [showError, setShowError] = useState(false);
+  
   const handleSubmit = async (e) => {
     e.preventDefault(); // Move this to the top for safety
 
@@ -992,14 +995,24 @@ const YetiLogin = () => {
       // Redirect to home page
       window.location.href = "/";
     } catch (error) {
-      const message =
-        error.response?.data?.message || "Server error. Please try again.";
-      alert("Login failed: " + message);
+      const message = error.response?.data?.message || "Server error. Please try again.";
+      setErrorMessage("Login failed: " + message);
+      setShowError(true);
     }
   };
+  
+  useEffect(() => {
+    if (showError) {
+      const timer = setTimeout(() => {
+        setShowError(false); // trigger slideUp animation
+      }, 3000); // 5 seconds
+
+      return () => clearTimeout(timer);
+    }
+  }, [showError]);
 
   return (
-    <div className="login_pag">
+    <div className="login_page">
       <form onSubmit={handleSubmit}>
         <div className="svgContainer">
           <div>
@@ -1035,6 +1048,11 @@ const YetiLogin = () => {
           <button id="login">Log in</button>
         </div>
       </form>
+      {errorMessage && (
+        <div className={`errorMessage ${!showError ? 'slideUp' : ''}`}>
+          {errorMessage}
+        </div>
+      )}
     </div>
   );
 };
