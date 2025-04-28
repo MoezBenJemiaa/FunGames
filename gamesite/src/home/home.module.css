@@ -65,7 +65,7 @@
 
 .scrollContent {
   padding-left: 100%; /* Ensure smooth start from the right */
-  animation: scroll 40s linear infinite;
+  animation: scroll 60s linear infinite;
 }
 
 @keyframes scroll {
