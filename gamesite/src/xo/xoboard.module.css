@@ -75,6 +75,9 @@
 }
 
 .popup button {
+  display: block;
+  width: 100%;
+  margin: 0.25rem auto;
   background-color: #29b6f6;
   border: none;
   padding: 0.5rem 1rem;
@@ -113,8 +116,9 @@
 .players {
   position: absolute;
   bottom: 20%;
-  width: 55%;
+  min-width: 850px;
   display: flex;
+  flex-direction: row-reverse;
   justify-content: space-between;
   padding: 0 30px;
   font-family: 'Comic Sans MS', cursive, sans-serif;
