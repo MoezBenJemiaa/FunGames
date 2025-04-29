@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Helmet } from "react-helmet";
+import { useState, useEffect } from "react";
 import styles from "./Profile.module.css";
 
 export default function ProfilePage() {
@@ -27,11 +26,11 @@ export default function ProfilePage() {
 
     setShowPopup(false);
   };
-
+  useEffect(() => {
+    document.title = "Profile - Fun Games";
+  }, []);
   return (
     <div className={styles.container}>
-      
-      
       <a href="/" className={styles.goBackLink}>
         &#8592; Go Back
       </a>

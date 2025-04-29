@@ -1,5 +1,5 @@
 import React, { useState,useEffect  } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import styles from "./Home.module.css";
 import Header from "../header/header";
 import GameCard from "../game/gamecard";
@@ -40,7 +40,7 @@ const HomePage = () => {
       document.body.classList.remove("popup-open");
     }
   }, [selectedGame, showRoomManager]);
-  
+
   const handlePlayClick = (gameTitle) => {
     setSelectedGame(gameTitle);
     setShowRoomManager(true);
