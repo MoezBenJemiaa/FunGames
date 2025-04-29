@@ -1,5 +1,6 @@
 import { Routes, Route, useParams, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { HelmetProvider } from "react-helmet-async";
 import HomePage from "./home/home";
 import LoginPage from "./login/YetiLogin";
 import Xo from "./xo/xoboard";
@@ -42,7 +43,7 @@ function GameRouteHandler() {
 
 function App() {
   return (
-    <>
+    <HelmetProvider>
       <Routes>
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/game/:roomCode" element={<GameRouteHandler />} />
@@ -51,7 +52,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/profile" element={<ProfilePage />} />
       </Routes>
-    </>
+    </HelmetProvider>
   );
 }
 
