@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 import { jwtDecode } from "jwt-decode";
+import { Helmet } from "react-helmet";
 import styles from "./xoboard.module.css";
 
 import finnImage from "../assets/finn.jpeg";
@@ -157,6 +158,10 @@ export default function XOGame() {
 
   return (
     <div className={styles.container}>
+      <Helmet>
+        <title>XO Game - Fun Games</title>
+      </Helmet>
+      
       <h1 className={styles.title}>XO Game 🎮</h1>
       <p className={styles.turnMessage}>{message}</p>
       <p className={styles.round}>

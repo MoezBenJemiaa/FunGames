@@ -1,4 +1,5 @@
 import React, { useState,useEffect  } from "react";
+import { Helmet } from "react-helmet";
 import styles from "./Home.module.css";
 import Header from "../header/header";
 import GameCard from "../game/gamecard";
@@ -23,12 +24,23 @@ const HomePage = () => {
   const [selectedGame, setSelectedGame] = useState("");
 
   useEffect(() => {
+    // Debug: Log selectedGame and showRoomManager
+    console.log("selectedGame:", selectedGame);
+
+    // Update the document title when the game is selected
+    if (selectedGame) {
+      document.title = `${selectedGame} - Fun Games`;
+    } else {
+      document.title = "Bright Worlds - Fun for All"; // Default title
+    }
+
     if (showRoomManager) {
       document.body.classList.add("popup-open");
     } else {
       document.body.classList.remove("popup-open");
     }
-  }, [showRoomManager]);
+  }, [selectedGame, showRoomManager]);
+  
   const handlePlayClick = (gameTitle) => {
     setSelectedGame(gameTitle);
     setShowRoomManager(true);
@@ -41,6 +53,10 @@ const HomePage = () => {
 
   return (
     <div className={styles.container}>
+       <Helmet>
+        <title>{selectedGame ? `${selectedGame} - Fun Games` : "Bright Worlds - Fun for All"}</title>
+      </Helmet>
+    
       <section className={`${styles.section} ${styles.homesBackground}`} id="home">
         <Header />
         <h1>

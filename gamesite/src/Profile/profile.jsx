@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { Helmet } from "react-helmet";
 import styles from "./Profile.module.css";
 
 export default function ProfilePage() {
@@ -30,6 +30,8 @@ export default function ProfilePage() {
 
   return (
     <div className={styles.container}>
+      
+      
       <a href="/" className={styles.goBackLink}>
         &#8592; Go Back
       </a>

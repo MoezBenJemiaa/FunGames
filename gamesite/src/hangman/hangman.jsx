@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 import { jwtDecode } from "jwt-decode";
+import { Helmet } from "react-helmet";
 import styles from "./hangman.module.css";
 
 import finnImage from "../assets/finn.jpeg";
@@ -170,6 +171,10 @@ export default function HangmanGame() {
 
   return (
     <div className={styles.container}>
+      <Helmet>
+        <title>Hangman Game - Fun Games</title>
+      </Helmet>
+
       <h1 className={styles.title}>Hangman Game 🎯</h1>
       <p className={styles.turnMessage}>{message}</p>
       <p className={styles.round}>Round: {round} / {maxRound}</p>

@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
+import { Helmet } from "react-helmet";
 import styles from './SnakeGame.module.css';
 
 const SnakeGame = () => {
@@ -159,6 +160,10 @@ const SnakeGame = () => {
 
   return (
     <div className={styles.wrapper}>
+      <Helmet>
+        <title>Snake Game - Fun Games</title>
+      </Helmet>
+      
       <canvas ref={canvasRef} className={styles.canvas}></canvas>
       {gameOver && (
         <div className={styles.popup}>

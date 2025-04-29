@@ -1,5 +1,5 @@
 import * as React from "react";
-
+import { Helmet } from "react-helmet";
 import  { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { gsap, TimelineMax } from "gsap";
@@ -93,6 +93,9 @@ useEffect(() => {
 
   return (
     <div className="notFoundPage" >
+      <Helmet>
+        <title>404 - Page Not Found</title>
+      </Helmet>
       <YetiSVG  />
       
       <LightSvg />
