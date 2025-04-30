@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
-import { Helmet } from "react-helmet";
 import { TweenMax, Power2, Quad, Expo } from "gsap";
 import "./YetiLogin.css";
 
@@ -1009,12 +1008,12 @@ const YetiLogin = () => {
       return () => clearTimeout(timer);
     }
   }, [showError]);
-
+  useEffect(() => {
+    document.title = "Login - Fun Games";
+  }, []);
   return (
     <div className="login_page">
-      <Helmet>
-        <title>Login - Fun Games</title>
-      </Helmet>
+      
       
       <form onSubmit={handleSubmit}>
         <div className="svgContainer">

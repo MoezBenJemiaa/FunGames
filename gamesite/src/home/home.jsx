@@ -1,5 +1,5 @@
 import React, { useState,useEffect  } from "react";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet";
 import styles from "./Home.module.css";
 import Header from "../header/header";
 import GameCard from "../game/gamecard";
