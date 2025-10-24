@@ -14,4 +14,4 @@ FunGames is an open-source repository featuring a variety of game projects. Whet
 - Clean and modular codebase
 - Easy to extend with new games
 
-![Demo](Screen Recording 2025-10-24 124635.mp4)
+[![Watch the demo](./demo-thumbnail.png)](./demo.mp4)
